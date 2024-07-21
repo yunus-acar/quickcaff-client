@@ -126,14 +126,3 @@ const Coffees = () => {
 };
 
 export default Coffees;
-
-/*
-
- <Button
-            onClick={() => {
-              setQuery({ key: "temperature" });
-            }}
-          >
-            <Filter size={24} />
-            <span>Filtreleri Temizle</span>
-          </Button>*/
