@@ -1,0 +1,17 @@
+query GetFilterableAttributes(
+  $key: String!
+  $temperature: Temperature
+  $density: String
+  $flavors: [String!]
+  $others: [String!]
+  $pairingSuggestions: [String!]
+) {
+  getFilterableAttributes(
+    key: $key
+    temperature: $temperature
+    density: $density
+    flavors: $flavors
+    others: $others
+    pairing_suggestions: $pairingSuggestions
+  )
+}

@@ -1,0 +1,25 @@
+query GetCoffee($slug: String!) {
+  getCoffee(slug: $slug) {
+    ...Coffee
+  }
+}
+
+fragment Coffee on CoffeePayload {
+  caffeine_content
+  createdAt
+  density
+  description
+  flavors
+  history
+  id
+  image
+  name
+  origin
+  others
+  pairing_suggestions
+  serving_temperature
+  slug
+  temperature
+  updatedAt
+  variations
+}

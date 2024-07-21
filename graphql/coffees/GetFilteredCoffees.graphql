@@ -1,0 +1,17 @@
+query GetFilteredCoffees(
+  $density: String!
+  $flavors: [String!]!
+  $pairingSuggestions: [String!]!
+  $temperature: Temperature!
+  $others: [String!]
+) {
+  getFilteredCoffees(
+    density: $density
+    flavors: $flavors
+    pairing_suggestions: $pairingSuggestions
+    temperature: $temperature
+    others: $others
+  ) {
+    ...Coffees
+  }
+}

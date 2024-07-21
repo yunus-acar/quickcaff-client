@@ -1,0 +1,9 @@
+fragment Coffees on CoffeePayload {
+  id
+  image
+  name
+  slug
+  description
+  temperature
+  caffeine_content
+}

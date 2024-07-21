@@ -1,0 +1,11 @@
+query GetJobs {
+  getJobs {
+    ...Jobs
+  }
+}
+
+fragment Jobs on JobPayload {
+  id
+  name
+  description
+}
