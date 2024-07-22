@@ -7,28 +7,27 @@ import {
   useGetFilterableAttributesQuery,
 } from "@/generated/graphql";
 import { queryKeys } from "@/utils/constant";
-import React, { Suspense } from "react";
-import { parseAsArrayOf, parseAsString, useQueryStates } from "nuqs";
-import QueryButton from "../../components/coffee-query-button";
-import { useSearchParams } from "next/navigation";
-import CoffeeDrawer from "@/components/coffee-drawer";
-import { Filter } from "lucide-react";
-import FilteredCoffesDrawer from "@/components/filtered-coffees.drawer";
-import { Button } from "@/components/ui/button";
+import { parseAsString, useQueryStates } from "nuqs";
 import { TfiBackLeft, TfiBackRight } from "react-icons/tfi";
 import { useToast } from "@/components/ui/use-toast";
+import dynamic from "next/dynamic";
+import { Button } from "@/components/ui/button";
+import searchParams from "@/utils/searchParams";
 
-export const searchParamsCache = {
-  density: parseAsString,
-  flavors: parseAsArrayOf(parseAsString),
-  others: parseAsArrayOf(parseAsString),
-  pairing_suggestions: parseAsArrayOf(parseAsString),
-  temperature: parseAsString,
-};
+const QueryButton = dynamic(() => import("@/components/coffee-query-button"), {
+  ssr: false,
+});
+
+const FilteredCoffesDrawer = dynamic(
+  () => import("@/components/filtered-coffees.drawer"),
+  {
+    ssr: false,
+  }
+);
 
 const Coffees = () => {
   const [query, setQuery] = useQueryStates({
-    ...searchParamsCache,
+    ...searchParams,
     key: parseAsString,
   });
   const { toast } = useToast();

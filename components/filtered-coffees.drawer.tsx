@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from "react";
 import CoffeeDrawer from "./coffee-drawer";
 import { useQueryStates } from "nuqs";
-import { searchParamsCache } from "@/app/coffees/page";
 import { Temperature, useGetFilteredCoffeesQuery } from "@/generated/graphql";
+import searchParams from "@/utils/searchParams";
 
 const FilteredCoffesDrawer = () => {
-  const [query] = useQueryStates(searchParamsCache);
+  const [query] = useQueryStates(searchParams);
   const [isOpen, setIsOpen] = useState(false);
 
   const { data } = useGetFilteredCoffeesQuery({

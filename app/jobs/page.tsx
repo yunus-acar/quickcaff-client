@@ -1,4 +1,3 @@
-import Button from "@/components/job-query-button";
 import {
   GetJobsDocument,
   GetJobsQuery,
@@ -7,9 +6,19 @@ import {
 import apolloClient from "@/lib/apollo";
 import { Metadata } from "next";
 import React from "react";
-import JobCoffeesDrawer from "@/components/job-coffees.drawer";
 import Title from "@/components/title";
 import Description from "@/components/description";
+import dynamic from "next/dynamic";
+
+const Button = dynamic(() => import("@/components/job-query-button"), {
+  ssr: false,
+});
+const JobCoffeesDrawer = dynamic(
+  () => import("@/components/job-coffees.drawer"),
+  {
+    ssr: false,
+  }
+);
 
 export const metadata: Metadata = {
   title: "QuickCaff - Mesleğinize Uygun Kahveler",
@@ -18,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 const Jobs = async () => {
-  const { data, loading } = await apolloClient().query<
+  const { data } = await apolloClient().query<
     GetJobsQuery,
     GetJobsQueryVariables
   >({
